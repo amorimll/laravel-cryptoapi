@@ -13,5 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('teste', [\App\Http\Controllers\CoinController::class, 'index']);
 
