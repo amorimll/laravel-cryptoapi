@@ -14,12 +14,8 @@ class CoinController extends Controller
 {
     public function coinPrice(Request $request) {
         try {
-            $queries = array();
-            parse_str($_SERVER['QUERY_STRING'], $queries);
-
-            $name = $queries['coin'];
+            $name = $request->query('coin');
             $response = Http::withoutVerifying()->get('https://api.coingecko.com/api/v3/coins/'.$name);
-            $check = DB::select('select * from coins where name = ?', [$response['name']]);
 
             $coin = Coin::updateOrCreate(
                 ['name' => $response['name']],
@@ -30,19 +26,15 @@ class CoinController extends Controller
                 'name' => $coin['name'],
                 'price' => $coin['price']
             ]);
-        } catch (Exception $e) {
+        } catch ( Exception $e) {
             return response()->json(['ErrorMessage' => 'Dados inválidos']) ;
         }
-
     }
 
     public function coinPriceByDate (Request $request) {
         try {
-            $queries = array();
-            parse_str($_SERVER['QUERY_STRING'], $queries);
-    
-            $name = $queries['coin'];
-            $datetime = $queries['date'];
+            $name = $request->query('coin');
+            $datetime = $request->query('date');
             $response = Http::withoutVerifying()->get('https://api.coingecko.com/api/v3/coins/'.$name.'/history?date='.$datetime);
 
             return response()->json([
@@ -50,7 +42,7 @@ class CoinController extends Controller
                 'price' => $response['market_data']['current_price']['brl'],
                 'date' => $datetime
             ]) ;
-        } catch (Exception $e) {
+        } catch ( Exception $e) {
             return response()->json(['ErrorMessage' => 'Dados inválidos']) ;
         }
     }

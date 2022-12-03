@@ -16,9 +16,5 @@ use App\Http\Controllers\CoinController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::post('/coin', [CoinController::class, 'coinPrice']);
-Route::post('/coin/history', [CoinController::class, 'coinPriceByDate']);
+Route::get('/coin', [CoinController::class, 'coinPrice']);
+Route::get('/coin/history', [CoinController::class, 'coinPriceByDate']);
