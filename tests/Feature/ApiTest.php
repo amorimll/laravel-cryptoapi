@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class ApiTest extends TestCase
 {
-    public function test_ApiTest()
+    public function test_Api()
     {
         $response = $this->get('api/coin?coin=bitcoin');
         $response
@@ -19,7 +19,7 @@ class ApiTest extends TestCase
             ->assertStatus(200);
     }
 
-    public function test_ApiByDateTest()
+    public function test_ApiByDate()
     {
         $response = $this->get('api/coin/history?coin=bitcoin&date=01-12-2022');
         $response
