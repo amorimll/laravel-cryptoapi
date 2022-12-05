@@ -8,9 +8,9 @@ http://amorim2-001-site1.ftempurl.com/api/coin/history?coin=bitcoin&date=01-01-2
 
 * PHP 8
 * Composer
+* XAMPP Server (Apenas se for usar um banco de dados local)
 
 ## Instalação local
-
 Use o comando "git clone https://github.com/amorimll/laravel-cryptoapi" em uma pasta vazia, em seguida abra a pasta que foi criada, terá o nome de "laravel-cryptoapi", abra um terminal e execute o comando "composer install" para instalar as depedências, para configurar o banco de dados, abra o arquivo .env.example, mude o nome para .env, e troque as informações pelo seu banco de dados correspondente, após a configuração do banco de dados, execute o comando "php artisan migrate" para a criação das tabelas, em caso de algum erro ocorrer, é possível criar a tabela "coins" (id, name, price) manualmente, depois de criar as tabelas, execute o comando "php artisan serve" para iniciar o servidor, e o servidor estará rodando na porta 8000, endpoints locais:
 
 * http://localhost:8000/api/coin?coin=bitcoin
