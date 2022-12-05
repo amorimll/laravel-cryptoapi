@@ -13,6 +13,7 @@ use App\Models\Coin;
 class CoinController extends Controller
 {
     public function coinPrice(Request $request) {
+        try {
             $name = $request->query('coin');
             $response = Http::withoutVerifying()->get('https://api.coingecko.com/api/v3/coins/'.$name);
 
@@ -25,7 +26,9 @@ class CoinController extends Controller
                 'name' => $coin['name'],
                 'price' => $coin['price']
             ]);
-
+        } catch ( Exception $e) {
+            return response()->json(['ErrorMessage' => 'Dados inválidos']) ;
+        }
     }
 
     public function coinPriceByDate (Request $request) {
