@@ -15,3 +15,14 @@ Use o comando "git clone https://github.com/amorimll/laravel-cryptoapi" em uma p
 
 * http://localhost:8000/api/coin?coin=bitcoin
 * http://localhost:8000/api/coin/history?coin=bitcoin&date=01-12-2021
+
+## Docker (Laravel Sail)
+
+Para criar o ambiente de desenvolvimento usando o docker, usei o laravel sail, as imagens são:
+
+* Servidor MySQL: https://hub.docker.com/repository/docker/amorim2/mysql-server
+* Aplicação Laravel: https://hub.docker.com/repository/docker/amorim2/sail-8.1
+
+## Testes
+
+Criei dois testes básicos usando a Feature do laravel, que podem ser executados usando o comando "php artisan test"
